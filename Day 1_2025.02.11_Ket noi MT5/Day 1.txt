@@ -1,0 +1,33 @@
+Ngày 1: Kết nối Python với MetaTrader 5 (MT5)
+Mục tiêu
+Cài đặt thư viện MetaTrader5
+Kết nối với tài khoản giao dịch
+
+Hướng dẫn
+1️⃣ Cài đặt thư viện
+Mở terminal hoặc command prompt và chạy:
+
+pip install MetaTrader5
+2️⃣ Kết nối MT5
+Chạy đoạn code sau để kiểm tra kết nối:
+
+import MetaTrader5 as mt5
+
+# Kết nối MT5
+if not mt5.initialize():
+    print("Kết nối MT5 thất bại!", mt5.last_error())
+    quit()
+
+# Lấy thông tin tài khoản
+account_info = mt5.account_info()
+if account_info is not None:
+    print(f"Tài khoản: {account_info.login}, Balance: {account_info.balance}")
+
+# Đóng kết nối
+mt5.shutdown()
+Kết quả mong đợi
+Nếu kết nối thành công, bạn sẽ thấy thông tin tài khoản của mình (ID, số dư).
+Nếu có lỗi, kiểm tra xem MT5 đã mở chưa và đăng nhập đúng tài khoản chưa.
+🔥 Thử thách nhỏ: Thử gọi mt5.terminal_info() để xem thông tin nền tảng MT5 của bạn.
+
+📌 Ngày mai: Lấy danh sách tất cả các tài sản (symbols) đang có trên MT5.
